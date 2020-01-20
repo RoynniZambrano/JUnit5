@@ -1,20 +1,18 @@
 package com.royforthewin;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MathUtilsTest {
 
     MathUtils mathUtils;
 
-    @BeforeAll
+    @BeforeEach
     void beforeAllInit() {
         mathUtils = new MathUtils();
     }
@@ -36,6 +34,25 @@ class MathUtilsTest {
     @DisplayName("mathUtils - divide method")
     void divideTest() {
         assertThrows(ArithmeticException.class, () -> mathUtils.divide(1, 0));
+    }
+
+    @Test
+    @DisplayName(" disabled test")
+    @Disabled
+    void disabledTest() {
+        fail("This test should be disabled");
+    }
+
+    @Test
+    @DisplayName(" assertAll")
+    void multiplyTest() {
+        assertAll(
+                () -> assertThat(mathUtils.multiply(2,2)).isEqualTo(4),
+                () -> assertThat(mathUtils.multiply(2,0)).isEqualTo(0),
+                () -> assertThat(mathUtils.multiply(2,-1)).isEqualTo(-2)
+        );
+
+
     }
 
 }
