@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="javaBrains" target="1.5" />
+      <module name="javaBrains" target="8" />
       <module name="junit-5-basics" target="1.5" />
     </bytecodeTargetLevel>
   </component>
